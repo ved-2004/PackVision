@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Checklist Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Upload Page -->
+    <div id="uploadPage" class="page active">
+        <div class="container">
+            <div class="header">
+                <h1>Travel Checklist Generator</h1>
+                <p class="subtitle">Upload your travel items and we'll create a personalized checklist</p>
+            </div>
+
+            <form id="uploadForm">
+                <!-- File Upload Section -->
+                <div class="form-section">
+                    <label class="form-label">Upload Images/Videos</label>
+                    <div class="upload-area" id="uploadArea">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="upload-text">Click to upload or drag and drop</p>
+                        <p class="upload-hint">Images and videos accepted</p>
+                        <input type="file" id="fileInput" multiple accept="image/*,video/*" hidden>
+                    </div>
+                    <div id="filePreview" class="file-preview"></div>
+                </div>
+
+                <!-- Travel Destination -->
+                <div class="form-section">
+                    <label for="destination" class="form-label">Travel Destination</label>
+                    <input 
+                        type="text" 
+                        id="destination" 
+                        name="destination" 
+                        class="form-input" 
+                        placeholder="e.g., Tokyo, Japan"
+                        required
+                    >
+                </div>
+
+                <!-- Travel Plan -->
+                <div class="form-section">
+                    <label class="form-label">Travel Plan</label>
+                    <div class="travel-plan-grid">
+                        <div class="input-group">
+                            <label for="startDate" class="input-label">Start Date</label>
+                            <input 
+                                type="date" 
+                                id="startDate" 
+                                name="startDate" 
+                                class="form-input"
+                                required
+                            >
+                        </div>
+                        <div class="input-group">
+                            <label for="endDate" class="input-label">End Date</label>
+                            <input 
+                                type="date" 
+                                id="endDate" 
+                                name="endDate" 
+                                class="form-input"
+                                required
+                            >
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 1rem;">
+                        <label for="notes" class="input-label">Additional Notes (Optional)</label>
+                        <textarea 
+                            id="notes" 
+                            name="notes" 
+                            class="form-input" 
+                            rows="3"
+                            placeholder="Any specific requirements or preferences..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Generate Checklist
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Page -->
+    <div id="loadingPage" class="page">
+        <div class="loading-container">
+            <div class="loader"></div>
+            <h2 class="loading-text">Creating your travel checklist</h2>
+            <p class="loading-subtext">Analyzing your items and destination...</p>
+        </div>
+    </div>
+
+    <!-- Checklist Page -->
+    <div id="checklistPage" class="page">
+        <div class="container">
+            <div class="header">
+                <h1>Your Travel Checklist</h1>
+                <div class="checklist-info">
+                    <p id="destinationInfo"></p>
+                    <p id="dateInfo"></p>
+                </div>
+            </div>
+
+            <div class="checklist-container" id="checklistContainer">
+                <!-- Checklist items will be inserted here by JavaScript -->
+            </div>
+
+            <div class="action-buttons">
+                <button class="secondary-btn" id="backBtn">Create Another</button>
+                <button class="primary-btn" id="downloadBtn">Download Checklist</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
